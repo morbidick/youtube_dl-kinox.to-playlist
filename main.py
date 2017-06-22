@@ -45,9 +45,8 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                     print("skipping season", season, "episode", episode)
                 continue
 
-            ydl_return = ydl.download([stream_url])
-
-            if ydl_return == 0:
+            try:
+                ydl_return = ydl.download([stream_url])
                 break
-            else:
-                print("ydl return:", ydl_return)
+            except:
+                continue
